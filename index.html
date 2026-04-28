@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabrielle Harrison — Data & AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F0FAFA;
+      --ink: #0A2525;
+      --accent: #0ABAB5;
+      --pink: #FF0090;
+      --lavender: #9B84B8;
+      --sage: #7A9E7E;
+      --white: #ffffff;
+      --border: #D6EFEE;
+      --muted: #5A7A7A;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(240,250,250,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--pink); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section { padding: 96px 40px; max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 48px);
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding-top: 60px;
+      max-width: 100%;
+      padding-left: 10vw; padding-right: 10vw;
+      position: relative; overflow: hidden;
+    }
+    .hero-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); opacity: 0.18; pointer-events: none; z-index: 0;
+    }
+    .blob-1 { width: 500px; height: 500px; background: var(--accent); top: -100px; right: -100px; }
+    .blob-2 { width: 350px; height: 350px; background: var(--pink); bottom: 50px; left: -80px; }
+    .blob-3 { width: 250px; height: 250px; background: var(--lavender); top: 40%; right: 20%; }
+    .hero-content { position: relative; z-index: 1; max-width: 780px; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 99px; padding: 6px 16px;
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .hero-tag-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(48px, 8vw, 88px);
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .hero-name .highlight { color: var(--pink); font-style: italic; }
+    .hero-tagline {
+      font-size: clamp(18px, 2.5vw, 26px);
+      color: var(--muted); font-weight: 300;
+      margin-bottom: 36px; max-width: 560px;
+      line-height: 1.5;
+    }
+    .hero-tagline strong { color: var(--ink); font-weight: 600; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 99px;
+      font-family: var(--sans); font-size: 15px; font-weight: 600;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+    .btn-primary { background: var(--pink); color: #fff; }
+    .btn-secondary { background: var(--white); color: var(--ink); border: 2px solid var(--border); }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px; color: var(--muted); letter-spacing: 0.08em;
+      text-transform: uppercase; z-index: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .scroll-line {
+      width: 1px; height: 48px; background: var(--border);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ── ABOUT ── */
+    #about { border-top: 1px solid var(--border); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .about-photo {
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #C8F0EE, #FFD6F0);
+      border-radius: 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: var(--muted);
+      border: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .about-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(10,186,181,0.1), rgba(255,0,144,0.1));
+    }
+    .about-photo-text { position: relative; z-index: 1; text-align: center; }
+    .about-text p { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--ink); font-weight: 600; }
+    .fun-facts {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px;
+    }
+    .fun-fact {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 99px; padding: 6px 14px;
+      font-size: 13px; color: var(--ink);
+    }
+
+    /* ── SKILLS ── */
+    #skills { border-top: 1px solid var(--border); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px; margin-top: 8px;
+    }
+    .skill-group {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+    }
+    .skill-group-title {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 14px;
+    }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      font-size: 12px; font-weight: 500; border-radius: 99px;
+      padding: 4px 12px; border: 1px solid transparent;
+    }
+    .chip-teal  { background: #C8F0EE; color: #007A76; border-color: #A0E0DC; }
+    .chip-pink  { background: #FFD6F0; color: #C0306A; border-color: #FFB3E0; }
+    .chip-lav   { background: #EDE5F6; color: #6A4FA0; border-color: #D4C5EE; }
+    .chip-sage  { background: #E8F3E9; color: #4A7A4E; border-color: #C4DEC6; }
+    .chip-ink   { background: #E8F0F0; color: var(--ink); border-color: var(--border); }
+
+    /* ── PROJECTS ── */
+    #projects { border-top: 1px solid var(--border); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .project-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+      text-decoration: none; color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .project-thumb {
+      height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px;
+    }
+    .project-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+    .project-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 3px 10px;
+      border-radius: 99px; background: var(--cream); color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .project-title {
+      font-family: var(--serif); font-size: 22px;
+      color: var(--ink); margin-bottom: 8px;
+    }
+    .project-desc { font-size: 14px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 20px; font-size: 13px; font-weight: 600;
+      color: var(--accent); text-decoration: none;
+    }
+    .project-link:hover { text-decoration: underline; }
+
+    /* ── BLOG ── */
+    #blog { border-top: 1px solid var(--border); }
+    .blog-list { display: flex; flex-direction: column; gap: 2px; }
+    .blog-post {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none; color: inherit;
+      transition: padding-left 0.2s;
+    }
+    .blog-post:hover { padding-left: 8px; }
+    .blog-post:last-child { border-bottom: none; }
+    .blog-post-left { flex: 1; }
+    .blog-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .blog-title {
+      font-family: var(--serif); font-size: 22px;
+      color: var(--ink); line-height: 1.3; margin-bottom: 8px;
+    }
+    .blog-post:hover .blog-title { color: var(--pink); }
+    .blog-excerpt { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 560px; }
+    .blog-meta { font-size: 12px; color: var(--muted); white-space: nowrap; padding-top: 4px; }
+    .blog-arrow { font-size: 20px; color: var(--border); margin-top: 4px; transition: color 0.2s, transform 0.2s; }
+    .blog-post:hover .blog-arrow { color: var(--pink); transform: translateX(4px); }
+
+    /* ── CONTACT ── */
+    #contact {
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    #contact h2 { margin-bottom: 16px; }
+    #contact p { color: var(--muted); font-size: 17px; max-width: 480px; margin: 0 auto 40px; }
+    .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px 24px;
+      font-size: 15px; font-weight: 500; color: var(--ink);
+      text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-link svg { width: 18px; height: 18px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 13px; color: var(--muted); max-width: 1000px; margin: 0 auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 24px; }
+      #hero { padding-left: 24px; padding-right: 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo { aspect-ratio: 16/9; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+      .blog-post { flex-direction: column; gap: 8px; }
+      .blog-meta { align-self: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Gabrielle<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob blob-1"></div>
+  <div class="hero-blob blob-2"></div>
+  <div class="hero-blob blob-3"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      Open to new opportunities
+    </div>
+    <h1 class="hero-name">
+      Gabrielle<br><span class="highlight">Harrison.</span>
+    </h1>
+    <p class="hero-tagline">
+      <strong>Data & AI Engineer</strong> building pipelines, agents, and tools that turn messy data into things that actually move the needle.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">Get in touch</a>
+      <a href="#projects" class="btn btn-secondary">See my work</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-photo">
+      <div class="about-photo-text">
+        <div style="font-size:32px;margin-bottom:8px;">📸</div>
+        <div>photo coming soon</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-label">About me</div>
+      <h2>Hi, I'm Gabby.</h2>
+      <p>
+        I'm a <strong>Data & AI Engineer</strong> with 6+ years of experience turning complex data problems into elegant, automated solutions. I specialize in building <strong>agentic AI systems</strong>, scalable data pipelines, and the kind of tooling that makes teams wonder how they ever lived without it.
+      </p>
+      <p>
+        My sweet spot is at the intersection of <strong>data engineering and AI tooling</strong> — designing systems that don't just analyze what happened, but actively do something about it. I've compressed weeks of manual work into minutes using multi-agent pipelines, and I'm always looking for the next thing to automate.
+      </p>
+      <p>
+        Based in <strong>Denver, CO</strong>. When I'm not building pipelines, I'm probably analyzing apartment prices or finding new ways to make data fun.
+      </p>
+      <div class="fun-facts">
+        <span class="fun-fact">📍 Denver, CO</span>
+        <span class="fun-fact">🤖 AI tooling nerd</span>
+        <span class="fun-fact">📊 Data pipeline builder</span>
+        <span class="fun-fact">🏔️ Colorado local</span>
+        <span class="fun-fact">✨ Always automating something</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">What I work with</div>
+  <h2>Skills & Tools</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title" style="color:var(--accent);">AI & Agents</div>
+      <div class="skill-chips">
+        <span class="chip chip-teal">Kiro</span>
+        <span class="chip chip-teal">Claude</span>
+        <span class="chip chip-teal">LLM Tooling</span>
+        <span class="chip chip-teal">Multi-agent Design</span>
+        <span class="chip chip-teal">Prompt Engineering</span>
+        <span class="chip chip-teal">Agentic Workflows</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title" style="color:var(--pink);">Data & Pipelines</div>
+      <div class="skill-chips">
+        <span class="chip chip-pink">Python</span>
+        <span class="chip chip-pink">SQL</span>
+        <span class="chip chip-pink">AWS Athena</span>
+        <span class="chip chip-pink">ETL/ELT</span>
+        <span class="chip chip-pink">CI/CD</span>
+        <span class="chip chip-pink">Data Modeling</span>
+        <span class="chip chip-pink">GitLab</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title" style="color:var(--lavender);">Analytics & Viz</div>
+      <div class="skill-chips">
+        <span class="chip chip-lav">Tableau</span>
+        <span class="chip chip-lav">ElasticStack</span>
+        <span class="chip chip-lav">OpenSearch</span>
+        <span class="chip chip-lav">Druid</span>
+        <span class="chip chip-lav">Superset</span>
+        <span class="chip chip-lav">ContentSquare</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title" style="color:var(--sage);">Process & Delivery</div>
+      <div class="skill-chips">
+        <span class="chip chip-sage">Agile/SCRUM</span>
+        <span class="chip chip-sage">Jira</span>
+        <span class="chip chip-sage">Technical Docs</span>
+        <span class="chip chip-sage">Mentorship</span>
+        <span class="chip chip-sage">Stakeholder Reporting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Things I've built</div>
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    <a class="project-card" href="https://gabriellerharrison0507.github.io/apartment-tracker/" target="_blank">
+      <div class="project-thumb" style="background:linear-gradient(135deg,#C8F0EE,#FFD6F0);">🏠</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">GitHub Actions</span>
+        </div>
+        <div class="project-title">Apartment Tracker</div>
+        <p class="project-desc">A personal dashboard tracking 1BR availability and pricing at my target Denver apartment complex. Daily scraper, price trend charts, AI-generated insights, and a furnishing budget tracker — all in a single HTML file.</p>
+        <span class="project-link">View live site →</span>
+      </div>
+    </a>
+    <div class="project-card" style="cursor:default;">
+      <div class="project-thumb" style="background:linear-gradient(135deg,#EDE5F6,#E8F3E9);">🤖</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">Kiro</span>
+          <span class="project-tag">Multi-agent</span>
+          <span class="project-tag">Tableau</span>
+        </div>
+        <div class="project-title">Analytics Automation Pipeline</div>
+        <p class="project-desc">A multi-agent system that ingests Figma designs and outputs finished Tableau dashboards — compressing 4–8 weeks of analytics work into a 20–40 minute pipeline. Built at Charter using Kiro.</p>
+        <span class="project-link" style="color:var(--muted);">Case study coming soon</span>
+      </div>
+    </div>
+    <div class="project-card" style="cursor:default;">
+      <div class="project-thumb" style="background:linear-gradient(135deg,#FFD6F0,#FFF3CD);">📊</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">Data Quality</span>
+        </div>
+        <div class="project-title">Test Validation Pipeline</div>
+        <p class="project-desc">Automated cross-validation of test case failures that surfaced a 36% false positive rate in the existing QA process — directly accelerating release cycles and reducing engineering toil.</p>
+        <span class="project-link" style="color:var(--muted);">Case study coming soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-label">Writing</div>
+  <h2>Blog</h2>
+  <div class="blog-list">
+
+    <a class="blog-post" href="#">
+      <div class="blog-post-left">
+        <span class="blog-tag">Data Engineering</span>
+        <div class="blog-title">How I built a daily apartment price tracker — and what it taught me about data pipelines</div>
+        <p class="blog-excerpt">What starts as a side project to track Denver rent prices turns into a lesson in scraping, Gist-as-a-database, GitHub Actions scheduling, and why caching always bites you.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+        <div class="blog-meta">Coming soon</div>
+        <div class="blog-arrow">→</div>
+      </div>
+    </a>
+
+    <a class="blog-post" href="#">
+      <div class="blog-post-left">
+        <span class="blog-tag">AI & Agents</span>
+        <div class="blog-title">Agentic AI isn't magic — here's how it actually works</div>
+        <p class="blog-excerpt">Everyone's talking about AI agents. Here's what they actually are, how I've built them in production, and the part nobody tells you about when the agent does something unexpected.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+        <div class="blog-meta">Coming soon</div>
+        <div class="blog-arrow">→</div>
+      </div>
+    </a>
+
+    <a class="blog-post" href="#">
+      <div class="blog-post-left">
+        <span class="blog-tag">AI & Agents</span>
+        <div class="blog-title">Prompt engineering for real work: what I've learned building production AI</div>
+        <p class="blog-excerpt">Prompt engineering tutorials always use toy examples. Here's what actually matters when you're building systems that run unsupervised, interact with real data, and need to be reliable.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+        <div class="blog-meta">Coming soon</div>
+        <div class="blog-arrow">→</div>
+      </div>
+    </a>
+
+    <a class="blog-post" href="#">
+      <div class="blog-post-left">
+        <span class="blog-tag">Career</span>
+        <div class="blog-title">From spreadsheets to multi-agent pipelines: my data career so far</div>
+        <p class="blog-excerpt">Six years ago I was reconciling data for ultra high net worth families in Excel. Here's how I got from there to building AI systems that automate entire analytics workflows.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+        <div class="blog-meta">Coming soon</div>
+        <div class="blog-arrow">→</div>
+      </div>
+    </a>
+
+    <a class="blog-post" href="#">
+      <div class="blog-post-left">
+        <span class="blog-tag">Tools</span>
+        <div class="blog-title">The tools I actually use as a data & AI engineer in 2026</div>
+        <p class="blog-excerpt">Not a sponsored list. Just the actual stack I reach for when I need to get something done — from local prototyping to production pipelines to staying sane during a release cycle.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+        <div class="blog-meta">Coming soon</div>
+        <div class="blog-arrow">→</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's talk</div>
+  <h2>Get in touch.</h2>
+  <p>Open to data & AI engineering roles in Denver or remote. Always happy to talk shop.</p>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:gabrielle.r.harrison0507@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      gabrielle.r.harrison0507@gmail.com
+    </a>
+    <a class="contact-link" href="https://linkedin.com/in/gabriellerharrison" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a class="contact-link" href="https://github.com/gabriellerharrison0507" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      GitHub
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Gabrielle Harrison</span>
+  <span style="color:var(--border);">built with love in Denver ✦</span>
+</footer>
+
+</body>
+</html>
